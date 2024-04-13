@@ -1,0 +1,33 @@
+.item {
+  background-color: var(--color-1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin: 4px;
+  min-width: 150px;
+  padding: 5px;
+}
+
+.item:hover {
+  background-color: var(--color-2);
+}
+
+.selected {
+  background-color: var(--color-3);
+}
+
+.selected:hover {
+  background-color: var(--color-4);
+  color: var(--rich-black);
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-color-scheme: light) {
+  .item, .item-selected {
+    background-color: #ddd;
+    color: #213547;
+  }
+}
