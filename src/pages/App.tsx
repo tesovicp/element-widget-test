@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { SelectItemsModal } from "../components/SlectItemsModal/SelectItemsModal";
+import { FC } from "react";
+// import { SelectItemsModal } from "../components/SlectItemsModal/SelectItemsModal";
 import "./App.css";
-import { Modal } from "../components/Modal/Modal";
+// import { Modal } from "../components/Modal/Modal";
 import { SelectItems } from "./SelectItems/SelectItems";
 
 const App: FC = () => {
