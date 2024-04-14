@@ -1,16 +1,23 @@
-import { ChangeEvent, FC, useMemo, useState } from "react";
-import { Modal } from "../../components/Modal/Modal";
-import { useElementsData } from "../../mocks/useElementsData";
+import { ChangeEvent, FC, useMemo, useRef, useState } from "react";
+import { useElementsData } from "../../hooks/useElementsData";
 import { Item } from "../../components/Item/Item";
 import { SelectItemsHeader } from "./SelectItemsHeader";
+import { SelectedItemsFooter } from "./SelectedItemsFooter";
 import "./SelectItems.css";
-import { SelectedItems } from "../../components/SelectedItems/SelectedItems";
-// import { SelectedItem } from "../../components/SelectedItem/SelectedItem";
 
 export const SelectItems: FC = () => {
   const { elements, filterItems } = useElementsData();
 
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const toggleDialog = () => {
+    if (!dialogRef.current) return;
+
+    dialogRef.current.hasAttribute("open")
+      ? dialogRef.current.close()
+      : dialogRef.current.showModal();
+  };
+
   const [selectedIDs, setSelectedIDs] = useState<number[]>([]);
 
   const [search, setSearch] = useState<string | undefined>(undefined);
@@ -18,7 +25,7 @@ export const SelectItems: FC = () => {
 
   const handleSelect = (id: number) => {
     if (selectedIDs.includes(id)) {
-      setSelectedIDs(selectedIDs.filter((id) => id !== id));
+      setSelectedIDs(selectedIDs.filter((i) => i !== id));
     } else {
       if (selectedIDs.length < 3) {
         setSelectedIDs([...(selectedIDs || []), id]);
@@ -45,11 +52,19 @@ export const SelectItems: FC = () => {
     return filteredAndSearched;
   }, [elements, search, filter]);
 
+  const footerProps = {
+    elements,
+    selectedIDs,
+    handleSelect,
+  };
+
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Choose maximum 3 items</button>
+      {/* <button onClick={() => setShowModal(true)}>Pick 3 items</button> */}
+      <button onClick={toggleDialog}>Pick 3 items</button>
 
-      <Modal isOpen={showModal}>
+      {/* <Modal ref={dialogRef}> */}
+      <dialog ref={dialogRef} className="dialog">
         <div id="select-modal-content">
           <SelectItemsHeader
             filterItems={filterItems}
@@ -67,21 +82,10 @@ export const SelectItems: FC = () => {
               />
             ))}
           </ul>
-          <footer>
-            <div>
-              <SelectedItems
-                elements={elements}
-                selectedIDs={selectedIDs}
-                onRemove={handleSelect}
-              />
-            </div>
-            <div className="footer-buttons">
-              <button>Save</button>
-              <button>Cancel</button>
-            </div>
-          </footer>
+          <SelectedItemsFooter {...footerProps} />
         </div>
-      </Modal>
+      </dialog>
+      {/* </Modal> */}
     </>
   );
 };

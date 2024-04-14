@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { SelectedItem } from "../SelectedItem/SelectedItem";
-import { IItem } from "../../mocks/useElementsData";
+import { IItem } from "../../hooks/useElementsData";
+import { getItem } from "../../core/utils";
+import "./SelectedItems.css";
 
 interface Props {
   elements: IItem[];
@@ -10,10 +12,10 @@ interface Props {
 
 export const SelectedItems: FC<Props> = ({ elements, selectedIDs, onRemove }) => {
   return (
-    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+    <ul className="selected-items">
       {selectedIDs.map((id) => (
-        <SelectedItem item={elements.filter((e) => e.id === id)[0]} onRemove={onRemove} />
+        <SelectedItem item={getItem(elements, id)} onRemove={onRemove} />
       ))}
-    </div>
+    </ul>
   );
 };

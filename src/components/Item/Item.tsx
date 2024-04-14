@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IItem } from "../../mocks/useElementsData";
+import { IItem } from "../../hooks/useElementsData";
 import classNames from "classnames";
 import "./Item.css";
 

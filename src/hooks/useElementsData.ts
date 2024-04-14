@@ -8,7 +8,6 @@ export interface IFilterItem {
   name: string;
 }
 
-// TODO remove export
 const getElements = () => {
   const result: IItem[] = [];
   for (let i = 1; i <= 300; i++) {

@@ -1,27 +1,20 @@
-import { FC } from "react";
-// import ReactDOM from "react-dom";
+import { FC, forwardRef } from "react";
 import "./Modal.css";
 
 interface Props {
   children: React.ReactNode;
-  isOpen: boolean;
+  // isOpen: boolean;
   // onClose?: () => void;
+  // toggleDialog: () => void;
 }
 
-export const Modal: FC<Props> = ({ isOpen, children }) => {
-  if (!isOpen) return null;
-
-  // return ReactDOM.createPortal(
-  //   <dialog open aria-modal="true" aria-labelledby="dialog-title" className="modal">
-  //     {children}
-  //   </dialog>,
-  //   document.body
-  // );
+export const Modal: FC<Props> = forwardRef<HTMLDialogElement, Props>(({ children }, ref) => {
+  // if (!isOpen) return null;
 
   return (
     // <dialog open aria-modal="true" aria-labelledby="dialog-title" className="modal">
-    <dialog open className="modal">
+    <dialog open className="modal" ref={ref}>
       {children}
     </dialog>
   );
-};
+});

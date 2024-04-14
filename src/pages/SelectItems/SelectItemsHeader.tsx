@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from "react";
-import { IFilterItem } from "../../mocks/useElementsData";
+import { IFilterItem } from "../../hooks/useElementsData";
 import "./SelectItemsHeader.css";
 
 interface Props {
