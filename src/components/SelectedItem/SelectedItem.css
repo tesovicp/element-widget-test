@@ -1,6 +1,6 @@
-.item {
-  background-color: #444;
-  cursor: pointer;
+.selected-item {
+  background-color: var(--color-4);
+  color: var(--color-1);
   display: flex;
   justify-content: space-between;
   margin: 4px;
@@ -9,7 +9,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .item {
+  .selected-item {
     background-color: #ddd;
     color: #213547;
   }

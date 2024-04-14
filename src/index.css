@@ -32,7 +32,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -160,7 +160,7 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-ol, ul {
+ol, ul, li {
   list-style: none;
   padding: 0;
 }
