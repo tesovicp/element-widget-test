@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IElemenent } from "../../mocks/getElements";
+import { IElemenent } from "../../mocks/useElementsData";
 import "./SelectedItem.css";
 
 interface Props {
