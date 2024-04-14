@@ -1,27 +1,29 @@
 .item {
   background-color: var(--color-1);
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
-  margin: 4px;
+  margin: 4px 0;
   min-width: 150px;
-  padding: 5px;
+  padding: 5px 10px;
+  width: 100%;
 }
 
 .item:hover {
   background-color: var(--color-2);
+  border: 1px solid var(--color-2);
 }
 
-.selected {
+.item-selected {
   background-color: var(--color-3);
+  color: var(--rich-black);
 }
 
-.selected:hover {
+.item-selected:hover {
   background-color: var(--color-4);
   color: var(--rich-black);
 }
 
-.disabled {
+.item-disabled {
   cursor: not-allowed;
 }
 

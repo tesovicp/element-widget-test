@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IElemenent } from "../../mocks/getElements";
-import "./Item.css";
 import classNames from "classnames";
+import "./Item.css";
 
 interface Props {
   isSelected: boolean;
@@ -11,10 +11,16 @@ interface Props {
 }
 
 export const Item: FC<Props> = ({ isSelected, item, disabled, onClick }) => (
-  <div
-    className={classNames("item", { selected: isSelected }, { disabled: disabled && !isSelected })}
-    onClick={() => onClick(item)}
-  >
-    <div>{item.name}</div>
-  </div>
+  <li>
+    <button
+      className={classNames(
+        "item",
+        { "item-selected": isSelected },
+        { "item-disabled": disabled && !isSelected }
+      )}
+      onClick={() => onClick(item)}
+    >
+      {item.name}
+    </button>
+  </li>
 );

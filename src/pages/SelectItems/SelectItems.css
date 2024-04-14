@@ -1,0 +1,45 @@
+  #select-modal-content {
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+
+  .header {
+    align-items: center;
+    background-color: var(--rich-black);
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    height: 100px;
+    padding: 10px;
+
+    /* >div {
+    border: #222;
+  } */
+  }
+
+  .search {
+    margin-left: 8px;
+    width: 150px;
+  }
+
+  .filter {
+    margin-left: 8px;
+  }
+
+  .footer {
+    background-color: var(--rich-black);
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    height: 100px;
+    padding: 10px;
+  }
+
+  .list {
+    overflow-y: scroll;
+  }

@@ -1,25 +1,14 @@
-import { FC, useEffect, useMemo, useRef, useState } from "react";
-import { IElemenent, getElements } from "../../mocks/getElements";
+import { FC, useMemo, useState } from "react";
+import { getElements, IElemenent } from "../../mocks/getElements";
 import { Item } from "../Item/Item";
-import "./SlectItemsModal.css";
+import "./SelectItemsModal.css";
 
-interface Props {
-  isOpen: boolean;
-}
+interface Props {}
 
-export const SelectItemsModal: FC<Props> = ({ isOpen }) => {
+export const SelectItemsModal: FC<Props> = () => {
   const data = useMemo(() => getElements(), []);
-  const modalRef = useRef<HTMLDialogElement>(null);
 
   const [selectedItems, setSelectedItems] = useState<IElemenent[]>([]);
-
-  useEffect(() => {
-    if (isOpen) {
-      modalRef.current?.showModal();
-    } else {
-      modalRef.current?.close();
-    }
-  }, [isOpen]);
 
   const onItemClick = (item: IElemenent) => {
     if (selectedItems.includes(item)) {
@@ -32,21 +21,22 @@ export const SelectItemsModal: FC<Props> = ({ isOpen }) => {
   };
 
   return (
-    <dialog id="select-modal" ref={modalRef}>
-      <div className="modal-header">
+    <dialog id="select-modal" open>
+      <header className="modal-header">
         <div>
-          Search <input type="text" />
+          <label htmlFor="search">Search</label>
+          <input id="search" className="search" type="search" />
         </div>
         <div>
-          Filter{" "}
-          <select>
+          <label htmlFor="filter">Filter </label>
+          <select id="filter" className="filter">
             <option value="10">{">10"}</option>
             <option value="100">{">100"}</option>
             <option value="200">{">200"}</option>
           </select>
         </div>
-      </div>
-      <div className="modal-list">
+      </header>
+      <ul className="modal-list">
         {data.map((e) => (
           <Item
             key={e.id}
@@ -56,8 +46,8 @@ export const SelectItemsModal: FC<Props> = ({ isOpen }) => {
             onClick={onItemClick}
           />
         ))}
-      </div>
-      <div className="modal-footer">{JSON.stringify(selectedItems)}</div>
+      </ul>
+      <footer className="modal-footer">{JSON.stringify(selectedItems)}</footer>
     </dialog>
   );
 };
