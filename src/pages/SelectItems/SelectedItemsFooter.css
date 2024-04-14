@@ -1,0 +1,13 @@
+.footer-selection {
+    align-content: center;
+    padding: 5px;
+    min-height: 100px;
+}
+
+.footer-buttons {
+    background-color: var(--rich-black);
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    padding: 10px;
+}
