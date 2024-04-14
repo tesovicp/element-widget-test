@@ -7,17 +7,22 @@
                                                              |___/
 ```
 
-# Element Widget - TEST
+## Element Widget - TEST
 
-## Used stack
+### Used stack
 
 React + TypeScript + Vite
 
-## Instalation and running
+### Instalation and running
 
 1. Run `npm install` to download dependencies.
 2. Run with `npm run dev`.
 
+### Preview
+
+Instant continuos deployment with Vercel:<br />
+https://element-widget-test.vercel.app
+
 ---
 
-### Wish me luck ;-)
+## Wish me luck ;-)

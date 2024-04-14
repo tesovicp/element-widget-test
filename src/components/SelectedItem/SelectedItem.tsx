@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { IElemenent } from "../../mocks/useElementsData";
+import { IItem } from "../../mocks/useElementsData";
 import "./SelectedItem.css";
 
 interface Props {
-  item: IElemenent;
+  item: IItem;
 }
 
 export const SelectedItem: FC<Props> = ({ item }) => (

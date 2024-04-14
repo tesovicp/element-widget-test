@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { IElemenent } from "../../mocks/useElementsData";
+import { IItem } from "../../mocks/useElementsData";
 import classNames from "classnames";
 import "./Item.css";
 
 interface Props {
   isSelected: boolean;
-  item: IElemenent;
+  item: IItem;
   disabled: boolean;
-  onClick: (item: IElemenent) => void;
+  onClick: (item: IItem) => void;
 }
 
 export const Item: FC<Props> = ({ isSelected, item, disabled, onClick }) => (
