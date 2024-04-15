@@ -3,9 +3,23 @@
   color: var(--color-1);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 4px;
   min-width: 140px;
-  padding: 5px;
+  padding: 5px 10px;
+}
+
+.selected-item-center {
+  justify-content: center;
+  cursor: default;
+}
+
+.selected-item-icon {
+  width: 16px;
+}
+
+.selected-item-icon:hover {
+  fill: red
 }
 
 @media (prefers-color-scheme: light) {

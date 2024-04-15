@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { IFilterItem } from "../../hooks/useElementsData";
-import "./SelectItemsHeader.css";
+import "./Header.css";
 
 interface Props {
   filterItems: IFilterItem[];
@@ -8,7 +8,7 @@ interface Props {
   onFilter: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const SelectItemsHeader: FC<Props> = ({ filterItems, onSearch, onFilter }) => {
+export const Header: FC<Props> = ({ filterItems, onSearch, onFilter }) => {
   return (
     <header className="select-items-header">
       <div>

@@ -1,0 +1,20 @@
+.select-items-header {
+  align-items: center;
+  background-color: var(--rich-black);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 20px;
+  height: fit-content;
+  justify-content: space-between;
+  /* min-height: 100px; */
+  padding: 10px;
+}
+
+.search {
+  margin-left: 8px;
+  width: 150px;
+}
+
+.filter {
+  margin-left: 8px;
+}

@@ -1,4 +1,6 @@
 import { FC } from "react";
+import classNames from "classnames";
+import xIcon from "../../assets/xmark-solid.svg";
 import { IItem } from "../../hooks/useElementsData";
 import "./SelectedItem.css";
 
@@ -11,11 +13,14 @@ export const SelectedItem: FC<Props> = ({ item, onRemove }) => {
   if (!item) {
     return null;
   }
+  const showX = !!onRemove;
   return (
     <li>
-      <button className={"selected-item"}>
+      <button className={classNames("selected-item", { "selected-item-center": !showX })}>
         <span>{item.name}</span>
-        {onRemove && <span onClick={() => onRemove(item.id)}>X</span>}
+        {showX && (
+          <img src={xIcon} className="selected-item-icon" onClick={() => onRemove(item.id)} />
+        )}
       </button>
     </li>
   );

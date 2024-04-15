@@ -1,8 +1,8 @@
 import { ChangeEvent, forwardRef, ForwardRefExoticComponent, useMemo, useState } from "react";
 import { useElementsData } from "../../hooks/useElementsData";
 import { Item } from "../../components/Item/Item";
-import { SelectItemsHeader } from "./SelectItemsHeader";
-import { SelectedItemsFooter } from "./SelectedItemsFooter";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 import "./SelectItems.css";
 
 interface Props {
@@ -61,11 +61,7 @@ export const SelectItems: ForwardRefExoticComponent<
   return (
     <dialog ref={ref} className="dialog">
       <div id="select-modal-content">
-        <SelectItemsHeader
-          filterItems={filterItems}
-          onSearch={handleSearch}
-          onFilter={handleChangeFilter}
-        />
+        <Header filterItems={filterItems} onSearch={handleSearch} onFilter={handleChangeFilter} />
         <ul className="list">
           {listItems.map((e) => (
             <Item
@@ -77,7 +73,7 @@ export const SelectItems: ForwardRefExoticComponent<
             />
           ))}
         </ul>
-        <SelectedItemsFooter {...footerProps} />
+        <Footer {...footerProps} />
       </div>
     </dialog>
   );
