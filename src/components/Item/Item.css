@@ -1,9 +1,13 @@
-.item {
-  background-color: var(--color-1);
+.item, .item-selected {
+  font-weight: 400;
   margin: 4px 0;
   min-width: 150px;
   padding: 5px;
   width: 100%;
+}
+
+.item {
+  background-color: var(--color-1);
 }
 
 .item:hover {
@@ -13,12 +17,11 @@
 
 .item-selected {
   background-color: var(--color-3);
-  color: var(--rich-black);
+  color: var(--dark);
 }
 
 .item-selected:hover {
   background-color: var(--color-4);
-  color: var(--rich-black);
 }
 
 .item-disabled {

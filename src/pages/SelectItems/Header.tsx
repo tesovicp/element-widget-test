@@ -1,5 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { IFilterItem } from "../../hooks/useElementsData";
+import xIcon from "../../assets/x-solid.svg";
 import "./Header.css";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 export const Header: FC<Props> = ({ filterItems, onSearch, onFilter }) => {
   return (
     <header className="select-items-header">
+      <img src={xIcon} className="x-icon" />
       <div>
         <label htmlFor="search">Search</label>
         <input id="search" className="search" onChange={onSearch} type="search" />

@@ -1,6 +1,6 @@
 .select-items-header {
   align-items: center;
-  background-color: var(--rich-black);
+  background-color: var(--bg);
   display: flex;
   flex-wrap: wrap;
   gap: 15px 20px;
@@ -8,6 +8,8 @@
   justify-content: space-between;
   /* min-height: 100px; */
   padding: 10px;
+  padding-top: 30px;
+  position: relative;
 }
 
 .search {
@@ -17,4 +19,12 @@
 
 .filter {
   margin-left: 8px;
+}
+
+.x-icon {
+  fill: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
 }

@@ -5,6 +5,7 @@ import { useElementsData } from "../../hooks/useElementsData";
 import { Flex } from "../../core/Flex/Flex";
 
 const LS_IDS = "element-widget-IDs";
+const MAX_ITEMS = 33;
 
 const Start: FC = () => {
   // Load data - TODO - useElementsData uset twice
@@ -37,15 +38,18 @@ const Start: FC = () => {
 
   return (
     <Flex orientation="column" gap="medium">
-      <button onClick={toggleDialog}>
-        {selection.length ? "Change my choice" : "Pick 3 items"}
+      <button className="button-primary" onClick={toggleDialog}>
+        {selection.length
+          ? "Change my choice"
+          : `Pick ${MAX_ITEMS} item${MAX_ITEMS > 1 ? "s" : ""}`}
       </button>
 
       <SelectedItems elements={elements} selectedIDs={selection} />
 
       <SelectItems
         ref={dialogRef}
-        initSelection={selection} // TODO: to finish
+        initSelection={selection}
+        maxItems={MAX_ITEMS}
         toggleDialog={toggleDialog}
         saveSelection={saveSelection}
       />

@@ -1,11 +1,12 @@
 .footer-selection {
     align-content: center;
+    background-color: var(--bg);
     padding: 5px;
     min-height: 100px;
 }
 
 .footer-buttons {
-    background-color: var(--rich-black);
+    background-color: var(--bg);
     display: flex;
     gap: 20px;
     justify-content: flex-end;

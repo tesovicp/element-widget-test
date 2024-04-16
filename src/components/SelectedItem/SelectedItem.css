@@ -1,7 +1,9 @@
 .selected-item {
   background-color: var(--color-4);
-  color: var(--color-1);
+  border: 1px solid var(--color-4);
+  color: var(--dark);
   display: flex;
+  font-weight: 500;
   justify-content: space-between;
   align-items: center;
   margin: 4px;
@@ -19,7 +21,8 @@
 }
 
 .selected-item-icon:hover {
-  fill: red
+  /* TODO - not working */
+  fill: red;
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,7 +1,7 @@
 import { FC } from "react";
+import { IItem } from "../../hooks/useElementsData";
 import classNames from "classnames";
 import xIcon from "../../assets/xmark-solid.svg";
-import { IItem } from "../../hooks/useElementsData";
 import "./SelectedItem.css";
 
 interface Props {

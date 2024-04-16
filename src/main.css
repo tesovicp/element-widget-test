@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #151f2c;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -83,12 +83,20 @@
   text-align: center;
 
   /* BLUE GRADIENT */
-  --color-1: #3f3f3f;
-  --color-2: #454545;
-  --color-3: #36abe0;
-  --color-4: #50c8ff;
+  --color-1: #223344;
+  --color-2: #2f3f4f;
+  --color-3: #e69500;
+  --color-4: orange;
 
   /* PALETTE */
+  --light: #fcfdfe;
+  --dark: #182433;
+  --bg: #151f2c;
+  --bg-tint: #1c2b3b;
+  --btn-bg: #182433;
+  --btn-active: #206bc4;
+  --primary: #206bc4;
+  --primary-fg: var(--light);
   --rich-black: #001219ff;
   --midnight-green: #005f73ff;
   --dark-cyan: #0a9396ff;
@@ -136,9 +144,9 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
+} */
 
 button:focus,
 button:focus-visible {
@@ -319,16 +327,33 @@ ol, ul, li {
   padding: 0;
 }
 
+.button-primary, .button-secondary {
+  color: var(--primary-fg);
+  font-weight: 500;
+  padding: 7px 30px;
+}
+
 .button-primary {
-  background-color: var(--color-success);
-  color: var(--rich-black);
-  padding: 0 30px;
+  background-color: var(--primary);
+  border: 0;
+}
+
+.button-primary:hover {
+  background-color: #1e5ca6;
 }
 
 .button-secondary {
-  background-color: var(--color-light);
-  color: var(--color-dark);
-  padding: 7px 30px;
+  background-color: var(--btn-bg);
+  border: 1px solid #2c415d;
+}
+
+.button-secondary:hover {
+  border-color: var(--primary);
+}
+
+.button-secondary:active {
+  border-color: #2c415d;
+  color: var(--btn-active);
 }
 
 path:hover {
