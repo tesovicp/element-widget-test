@@ -8,7 +8,7 @@ import { LS_IDS, MAX_ITEMS } from "../../core/consts";
 import styled from "styled-components";
 
 const Background = styled.div`
-  background-image: url("src/assets/list-icon.png");
+  background-image: url("list-icon.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: min(80vh, 80vw);

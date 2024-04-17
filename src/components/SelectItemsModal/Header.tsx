@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from "react";
 import { IFilterItem } from "../../hooks/useElementsData";
 import styled from "styled-components";
-import XSvg from "../../assets/x-w.svg";
+import XSvg from "/x-w.svg";
 import { Flex } from "../../core/Flex/Flex";
 import { MAX_ITEMS } from "../../core/consts";
 
