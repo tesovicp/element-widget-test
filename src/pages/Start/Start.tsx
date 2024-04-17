@@ -5,6 +5,21 @@ import { useElementsData } from "../../hooks/useElementsData";
 import { Flex } from "../../core/Flex/Flex";
 import { Button } from "../../core/Button/Button";
 import { LS_IDS, MAX_ITEMS } from "../../core/consts";
+import styled from "styled-components";
+
+const Background = styled.div`
+  background-image: url("src/assets/list-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: min(80vh, 80vw);
+  height: 100vh;
+  left: 0;
+  opacity: 0.05;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+`;
 
 const Start: FC = () => {
   // Load data - TODO - useElementsData uset twice
@@ -37,23 +52,27 @@ const Start: FC = () => {
   };
 
   return (
-    <Flex orientation="column" gap="medium">
-      <Button $primary onClick={toggleDialog}>
-        {selection.length
-          ? "Change my choice"
-          : `Pick ${MAX_ITEMS} item${MAX_ITEMS > 1 ? "s" : ""}`}
-      </Button>
+    <>
+      <Background />
 
-      <SelectedItems elements={elements} selectedIDs={selection} />
+      <Flex orientation="column" gap="medium">
+        <Button $primary onClick={toggleDialog}>
+          {selection.length
+            ? "Change my choice"
+            : `Pick ${MAX_ITEMS} item${MAX_ITEMS > 1 ? "s" : ""}`}
+        </Button>
 
-      <SelectItemsModal
-        ref={dialogRef}
-        initSelection={selection}
-        maxItems={MAX_ITEMS}
-        toggleDialog={toggleDialog}
-        saveSelection={saveSelection}
-      />
-    </Flex>
+        <SelectedItems elements={elements} selectedIDs={selection} />
+
+        <SelectItemsModal
+          ref={dialogRef}
+          initSelection={selection}
+          maxItems={MAX_ITEMS}
+          toggleDialog={toggleDialog}
+          saveSelection={saveSelection}
+        />
+      </Flex>
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import { ChangeEvent, FC } from "react";
 import { IFilterItem } from "../../hooks/useElementsData";
 import styled from "styled-components";
-import XSvg from "../../assets/x-solid.svg";
+import XSvg from "../../assets/x-w.svg";
 import { Flex } from "../../core/Flex/Flex";
 import { MAX_ITEMS } from "../../core/consts";
 
-const HeaderActions = styled.header`
+const ActionsHeader = styled.header`
   align-items: center;
   background-color: var(--bg);
   display: flex;
@@ -42,7 +42,7 @@ const Label = styled.label`
   }
 `;
 
-const Xicon = styled.img`
+const Ximg = styled.img`
   position: absolute;
   right: 30px;
   top: 30px;
@@ -76,8 +76,8 @@ export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) 
       <Flex css={{ justifyContent: "center" }}>
         <h3>{`Please select max ${MAX_ITEMS} items`}</h3>
       </Flex>
-      <HeaderActions>
-        <Xicon src={XSvg} onClick={onClose} />
+      <ActionsHeader>
+        <Ximg src={XSvg} onClick={onClose} />
         <Flex gap="small">
           <Label htmlFor="search">Search</Label>
           <SearchInput id="search" onChange={onSearch} type="search" />
@@ -92,7 +92,7 @@ export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) 
             ))}
           </FilterSelect>
         </Flex>
-      </HeaderActions>
+      </ActionsHeader>
     </>
   );
 };

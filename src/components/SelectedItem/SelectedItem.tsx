@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IItem } from "../../hooks/useElementsData";
-import xIcon from "../../assets/xmark-solid.svg";
+import xIcon from "../../assets/x-b.svg";
 import styled from "styled-components";
 
 const SelectedItemButton = styled.button<{ $showX?: boolean }>`
