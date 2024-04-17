@@ -8,6 +8,8 @@ interface Props {
   // toggleDialog: () => void;
 }
 
+// TODO - remove - or make and use modal component
+
 export const Modal: FC<Props> = forwardRef<HTMLDialogElement, Props>(({ children }, ref) => {
   // if (!isOpen) return null;
 

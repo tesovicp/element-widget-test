@@ -16,7 +16,7 @@ export const Button = styled.button<{ $primary?: boolean; $small?: boolean }>`
     color: ${({ $primary }) => ($primary ? "" : "var(--btn-active)")};
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 480px) {
     padding: ${({ $small }) => ($small ? "7px 15px" : "7px 30px")};
   }
 `;

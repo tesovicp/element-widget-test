@@ -18,6 +18,9 @@ const Dialog = styled.dialog`
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
   }
+  @media (max-width: 450px) {
+    padding: 5px;
+  }
 `;
 
 const DilogContent = styled.div`

@@ -56,6 +56,11 @@ const Xicon = styled.img`
   &:hover {
     background-color: #fff2;
   }
+
+  @media (max-width: 450px) {
+    right: 20px;
+    top: 20px;
+  }
 `;
 
 interface Props {
