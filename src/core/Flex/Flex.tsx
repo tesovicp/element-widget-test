@@ -10,7 +10,7 @@ interface Props {
   css?: CSS.Properties;
 }
 
-const gaps = { small: "1rem", medium: "1.5rem", large: "2rem" };
+const gaps = { small: "0.5rem", medium: "1.5rem", large: "3rem" };
 
 export const Flex: FC<Props> = ({ children, gap, orientation = "row", css }) => {
   return (

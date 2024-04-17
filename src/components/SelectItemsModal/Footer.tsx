@@ -42,14 +42,16 @@ export const Footer: FC<Props> = ({
       <SelectedItems elements={elements} selectedIDs={selectedIDs} onRemove={handleSelect} />
     </FooterSelection>
     <FooterButtons>
-      <Button onClick={() => clearSelected()} style={{ alignSelf: "" }}>
+      <Button onClick={() => clearSelected()} $small>
         Clear
       </Button>
       <Flex>
         <Button $primary onClick={() => saveSelection(selectedIDs)}>
           Save
         </Button>
-        <Button onClick={toggleDialog}>Cancel</Button>
+        <Button onClick={toggleDialog} $small>
+          Cancel
+        </Button>
       </Flex>
     </FooterButtons>
   </footer>

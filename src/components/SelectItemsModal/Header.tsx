@@ -29,9 +29,16 @@ const FilterSelect = styled.select`
   border: 2px solid var(--border);
   border-radius: 4px;
   margin-left: 8px;
+  text-align: center;
+  width: 100px;
+`;
 
-  @media (max-width: 450px) {
-    margin-left: 16px;
+const Label = styled.label`
+  width: auto;
+
+  @media (max-width: 480px) {
+    text-align: left;
+    width: 55px;
   }
 `;
 
@@ -66,12 +73,12 @@ export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) 
       </Flex>
       <HeaderActions>
         <Xicon src={XSvg} onClick={onClose} />
-        <Flex>
-          <label htmlFor="search">Search</label>
+        <Flex gap="small">
+          <Label htmlFor="search">Search</Label>
           <SearchInput id="search" onChange={onSearch} type="search" />
         </Flex>
-        <div>
-          <label htmlFor="filter">Filter </label>
+        <Flex>
+          <Label htmlFor="filter">Filter</Label>
           <FilterSelect id="filter" onChange={onFilter}>
             {filterItems.map((f) => (
               <option key={f.id} value={f.id}>
@@ -79,7 +86,7 @@ export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) 
               </option>
             ))}
           </FilterSelect>
-        </div>
+        </Flex>
       </HeaderActions>
     </>
   );

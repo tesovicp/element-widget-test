@@ -9,6 +9,7 @@ const Dialog = styled.dialog`
   background-color: transparent;
   border: none;
   margin: auto auto;
+  min-width: 340px;
   max-width: 500px;
   padding: 15px;
   width: 100vw;
@@ -27,7 +28,7 @@ const DilogContent = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 280px;
-  max-height: 760px;
+  max-height: 735px;
   padding: 15px;
   width: 100%;
 `;

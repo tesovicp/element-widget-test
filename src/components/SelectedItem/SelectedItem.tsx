@@ -11,9 +11,9 @@ const SelectedItemButton = styled.button<{ $showX?: boolean }>`
   cursor: default;
   display: flex;
   font-weight: 500;
-  justify-content: ${(props) => (props.$showX ? "space-between" : "center")};
+  justify-content: ${({ $showX }) => ($showX ? "space-between" : "center")};
   margin: 4px;
-  min-width: 150px;
+  min-width: 140px;
   padding: 7px;
   padding-left: 15px;
 `;

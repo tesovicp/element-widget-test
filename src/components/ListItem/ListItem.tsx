@@ -3,26 +3,27 @@ import { IItem } from "../../hooks/useElementsData";
 import styled from "styled-components";
 
 const Item = styled.button<{ $isSelected?: boolean; $disabled?: boolean }>`
-  background-color: ${(props) => (props.$isSelected ? "var(--color-3)" : "var(--color-1)")};
-  color: ${(props) => (props.$isSelected ? "var(--dark)" : "var(--light)")};
-  cursor: ${(props) => (props.$disabled && !props.$isSelected ? "not-allowed" : "pointer")};
-  font-weight: ${(props) => (props.$isSelected ? 600 : 400)};
+  background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-3)" : "var(--color-1)")};
+  color: ${({ $isSelected }) => ($isSelected ? "var(--dark)" : "var(--light)")};
+  cursor: ${({ $disabled, $isSelected }) =>
+    $disabled && !$isSelected ? "not-allowed" : "pointer"};
+  font-weight: ${({ $isSelected }) => ($isSelected ? 600 : 400)};
   margin: 3px 0;
   min-width: 150px;
   padding: 5px;
   width: 100%;
 
   &:hover {
-    background-color: ${(props) => (props.$isSelected ? "var(--color-4)" : "var(--color-2)")};
+    background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-4)" : "var(--color-2)")};
     border: 1px solid transparent;
   }
 
   @media (prefers-color-scheme: light) {
-    background-color: ${(props) => (props.$isSelected ? "var(--color-3)" : "#ccc")};
+    background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-3)" : "#ccc")};
     color: #213547;
 
     &:hover {
-      background-color: ${(props) => (props.$isSelected ? "var(--color-4)" : "#eee")};
+      background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-4)" : "#eee")};
     }
   }
 `;
