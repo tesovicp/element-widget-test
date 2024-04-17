@@ -31,7 +31,7 @@ const DilogContent = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 280px;
-  max-height: 735px;
+  max-height: min(90vh, 735px);
   padding: 15px;
   width: 100%;
 `;

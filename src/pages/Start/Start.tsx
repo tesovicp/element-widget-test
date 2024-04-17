@@ -4,7 +4,7 @@ import { SelectedItems } from "../../components/SelectedItems/SelectedItems";
 import { useElementsData } from "../../hooks/useElementsData";
 import { Flex } from "../../core/Flex/Flex";
 import { Button } from "../../core/Button/Button";
-import { LS_IDS, MAX_ITEMS } from "../../core/consts";
+import { LS_IDS, MAX_ITEMS } from "../../core/constants";
 import styled from "styled-components";
 
 const Background = styled.div`
@@ -12,11 +12,11 @@ const Background = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: min(80vh, 80vw);
-  height: 100vh;
+  height: calc(100vh - 100px);
   left: 0;
   opacity: 0.05;
   position: absolute;
-  top: 0;
+  bottom: 0;
   width: 100vw;
   z-index: -1;
 `;

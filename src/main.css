@@ -19,6 +19,7 @@
   text-align: center;
 
   /* BLUE GRADIENT */
+  --color-0: #203040;
   --color-1: #223344;
   --color-2: #2f3f4f;
   --color-3: #e69500;
@@ -26,6 +27,7 @@
 
   /* PALETTE */
   --light: #fcfdfe;
+  --light-dim: #8c8d8e;
   --dark: #182433;
   --bg: #151f2c;
   --bg-tint: #1c2b3b;

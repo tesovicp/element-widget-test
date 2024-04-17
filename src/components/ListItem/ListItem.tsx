@@ -3,8 +3,10 @@ import { IItem } from "../../hooks/useElementsData";
 import styled from "styled-components";
 
 const Item = styled.button<{ $isSelected?: boolean; $disabled?: boolean }>`
-  background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-3)" : "var(--color-1)")};
-  color: ${({ $isSelected }) => ($isSelected ? "var(--dark)" : "var(--light)")};
+  background-color: ${({ $disabled, $isSelected }) =>
+    $isSelected ? "var(--color-3)" : $disabled ? "var(--color-0)" : "var(--color-1)"};
+  color: ${({ $disabled, $isSelected }) =>
+    $isSelected ? "var(--dark)" : $disabled ? "var(--light-dim)" : "var(--light)"};
   cursor: ${({ $disabled, $isSelected }) =>
     $disabled && !$isSelected ? "not-allowed" : "pointer"};
   font-weight: ${({ $isSelected }) => ($isSelected ? 600 : 400)};
@@ -14,7 +16,8 @@ const Item = styled.button<{ $isSelected?: boolean; $disabled?: boolean }>`
   width: 100%;
 
   &:hover {
-    background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-4)" : "var(--color-2)")};
+    background-color: ${({ $disabled, $isSelected }) =>
+      $isSelected ? "var(--color-4)" : $disabled ? "var(--color-0)" : "var(--color-2)"};
     border: 1px solid transparent;
   }
 

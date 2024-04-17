@@ -3,7 +3,12 @@ import { IFilterItem } from "../../hooks/useElementsData";
 import styled from "styled-components";
 import XSvg from "/x-w.svg";
 import { Flex } from "../../core/Flex/Flex";
-import { MAX_ITEMS } from "../../core/consts";
+import { MAX_ITEMS } from "../../core/constants";
+
+const TitleDiv = styled.div`
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 5px;
+`;
 
 const ActionsHeader = styled.header`
   align-items: center;
@@ -14,6 +19,11 @@ const ActionsHeader = styled.header`
   height: fit-content;
   justify-content: space-between;
   padding: 20px 10px;
+
+  @media (max-width: 460px) {
+    gap: 8px;
+    padding: 10px 5px;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -73,9 +83,9 @@ interface Props {
 export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) => {
   return (
     <>
-      <Flex css={{ justifyContent: "center" }}>
+      <TitleDiv>
         <h3>{`Please select max ${MAX_ITEMS} items`}</h3>
-      </Flex>
+      </TitleDiv>
       <ActionsHeader>
         <Ximg src={XSvg} onClick={onClose} />
         <Flex gap="small">

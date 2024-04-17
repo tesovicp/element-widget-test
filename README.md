@@ -9,18 +9,18 @@
 
 ## Element Widget - TEST
 
-### Used stack
+### Tech stack
 
 React + TypeScript + Vite
 
-### Instalation and running
+### Installation and running
 
 1. Run `npm install` to download dependencies.
 2. Run with `npm run dev`.
 
 ### Preview
 
-Instant continuos deployment with Vercel:<br />
+Instant continuous deployment with Vercel:<br />
 https://element-widget-test.vercel.app
 
 ---
