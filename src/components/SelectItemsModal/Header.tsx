@@ -1,9 +1,9 @@
 import { ChangeEvent, FC } from "react";
 import { IFilterItem } from "../../data/getElementsData";
-import styled from "styled-components";
-import XSvg from "/x-w.svg";
 import { Flex } from "../../core/Flex/Flex";
 import { MAX_ITEMS } from "../../core/constants";
+import { Xicon } from "../../core/Icons/x-icon";
+import styled from "styled-components";
 
 const TitleDiv = styled.div`
   border-bottom: 1px solid var(--border);
@@ -52,14 +52,14 @@ const Label = styled.label`
   }
 `;
 
-const Ximg = styled.img`
+const Xbox = styled.div`
   position: absolute;
   right: 30px;
   top: 30px;
 
   border-radius: 5px;
   cursor: pointer;
-  padding: 3px;
+  padding: 3px 5px;
   height: 26px;
   width: 26px;
 
@@ -70,6 +70,12 @@ const Ximg = styled.img`
   @media (max-width: 450px) {
     right: 20px;
     top: 20px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    &:hover {
+      background-color: #aaa5;
+    }
   }
 `;
 
@@ -87,7 +93,9 @@ export const Header: FC<Props> = ({ filterItems, onSearch, onFilter, onClose }) 
         <h3>{`Please select max ${MAX_ITEMS} items`}</h3>
       </TitleDiv>
       <ActionsHeader>
-        <Ximg src={XSvg} onClick={onClose} />
+        <Xbox onClick={onClose}>
+          <Xicon fill="var(--light)" />
+        </Xbox>
         <Flex gap="small">
           <Label htmlFor="search">Search</Label>
           <SearchInput id="search" onChange={onSearch} type="search" />

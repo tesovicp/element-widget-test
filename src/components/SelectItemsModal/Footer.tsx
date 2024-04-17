@@ -49,7 +49,7 @@ export const Footer: FC<Props> = ({
         <Button $primary onClick={() => saveSelection(selectedIDs)} type="button">
           Save
         </Button>
-        <Button tabIndex={1} onClick={onClose} $small type="reset">
+        <Button autoFocus onClick={onClose} $small type="reset">
           Cancel
         </Button>
       </Flex>

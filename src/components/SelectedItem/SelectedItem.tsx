@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IItem } from "../../data/getElementsData";
-import xIcon from "/x-b.svg";
 import styled from "styled-components";
+import { Xicon } from "../../core/Icons/x-icon";
 
 const SelectedItemButton = styled.button<{ $showX?: boolean }>`
   align-items: center;
@@ -18,10 +18,10 @@ const SelectedItemButton = styled.button<{ $showX?: boolean }>`
   padding-left: 15px;
 `;
 
-const XIcon = styled.img`
+const Xbox = styled.div`
   border-radius: 5px;
   cursor: pointer;
-  padding: 3px;
+  padding: 3px 5px;
   height: 26px;
   width: 26px;
 
@@ -42,9 +42,13 @@ export const SelectedItem: FC<Props> = ({ item, onRemove }) => {
   const showX = onRemove !== undefined;
   return (
     <li>
-      <SelectedItemButton $showX={showX}>
+      <SelectedItemButton $showX={showX} type="button">
         <span>{item.name}</span>
-        {showX && <XIcon src={xIcon} onClick={() => onRemove(item.id)} />}
+        {showX && (
+          <Xbox>
+            <Xicon />
+          </Xbox>
+        )}
       </SelectedItemButton>
     </li>
   );
