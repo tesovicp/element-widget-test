@@ -18,7 +18,7 @@
   padding: 2rem;
   text-align: center;
 
-  /* BLUE GRADIENT */
+  /* LIST ITEMS GRADIENT */
   --color-0: #203040;
   --color-1: #223344;
   --color-2: #2f3f4f;
@@ -34,7 +34,8 @@
   --btn-bg: #182433;
   --btn-active: #206bc4;
   --primary: #206bc4;
-  --primary-fg: var(--light);
+  --primary-fg: #fcfdfe;
+  --secondary-fg: #fcfdfe;
   --border: #134076;
   --vanilla: #e9d8a6ff;
 
@@ -86,6 +87,27 @@ select {
   :root {
     color: #213547;
     background-color: #ffffff;
+  }
+
+  #root {
+    /* LIST ITEMS GRADIENT */
+    --color-0: #eef1f4;
+    --color-1: #eef1f4;
+    --color-2: #dee1e4;
+
+    /* PALETTE */
+    --light: #213547;
+    --light-dim: #8c8d8e;
+    --dark: #fcfdfe;
+    --bg: #fcfdfe;
+    --bg-tint: #1c2b3b;
+    --btn-bg: #fcfdfe;
+    --btn-active: #206bc4;
+    --primary: #206bc4;
+    --primary-fg: #fcfdfe;
+    --secondary-fg: #213547;
+    --border: #bcbdbe;
+    --vanilla: #e9d8a6ff;
   }
 }
 

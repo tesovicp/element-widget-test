@@ -20,15 +20,6 @@ const Item = styled.button<{ $isSelected?: boolean; $disabled?: boolean }>`
       $isSelected ? "var(--color-4)" : $disabled ? "var(--color-0)" : "var(--color-2)"};
     border: 1px solid transparent;
   }
-
-  @media (prefers-color-scheme: light) {
-    background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-3)" : "#ccc")};
-    color: #213547;
-
-    &:hover {
-      background-color: ${({ $isSelected }) => ($isSelected ? "var(--color-4)" : "#eee")};
-    }
-  }
 `;
 
 interface Props {
