@@ -2,7 +2,14 @@ import { FC } from "react";
 import { SelectedItem } from "../SelectedItem/SelectedItem";
 import { IItem } from "../../hooks/useElementsData";
 import { getItem } from "../../core/utils";
-import "./SelectedItems.css";
+import styled from "styled-components";
+
+const SelectedItemsList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 interface Props {
   elements: IItem[];
@@ -12,10 +19,10 @@ interface Props {
 
 export const SelectedItems: FC<Props> = ({ elements, selectedIDs, onRemove }) => {
   return (
-    <ul className="selected-items">
+    <SelectedItemsList>
       {selectedIDs.map((id) => (
         <SelectedItem key={id} item={getItem(elements, id)} onRemove={onRemove} />
       ))}
-    </ul>
+    </SelectedItemsList>
   );
 };

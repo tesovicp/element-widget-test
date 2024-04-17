@@ -97,6 +97,7 @@
   --btn-active: #206bc4;
   --primary: #206bc4;
   --primary-fg: var(--light);
+  --border: #134076;
   --rich-black: #001219ff;
   --midnight-green: #005f73ff;
   --dark-cyan: #0a9396ff;
@@ -327,35 +328,6 @@ ol, ul, li {
   padding: 0;
 }
 
-.button-primary, .button-secondary {
-  color: var(--primary-fg);
-  font-weight: 500;
-  padding: 7px 30px;
-}
-
-.button-primary {
-  background-color: var(--primary);
-  border: 0;
-}
-
-.button-primary:hover {
-  background-color: #1e5ca6;
-}
-
-.button-secondary {
-  background-color: var(--btn-bg);
-  border: 1px solid #2c415d;
-}
-
-.button-secondary:hover {
-  border-color: var(--primary);
-}
-
-.button-secondary:active {
-  border-color: #2c415d;
-  color: var(--btn-active);
-}
-
-path:hover {
+/* path:hover {
   fill: red;
-}
+} */

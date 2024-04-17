@@ -1,9 +1,50 @@
 import { ChangeEvent, forwardRef, ForwardRefExoticComponent, useMemo, useState } from "react";
 import { useElementsData } from "../../hooks/useElementsData";
-import { Item } from "../../components/Item/Item";
+import { ListItem } from "../ListItem/ListItem";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import "./SelectItems.css";
+import styled from "styled-components";
+
+const Dialog = styled.dialog`
+  background-color: transparent;
+  border: none;
+  margin: auto auto;
+  max-width: 500px;
+  padding: 15px;
+  width: 100vw;
+  &::backdrop {
+    background-color: #4564;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+`;
+
+const DilogContent = styled.div`
+  background-color: var(--bg);
+  border: var(--border) 2px solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  max-height: 760px;
+  padding: 15px;
+  width: 100%;
+`;
+
+const ListItems = styled.ul`
+  border: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-height: 58px;
+  overflow-y: scroll;
+  padding: 5px;
+`;
+
+const Message = styled.p`
+  color: var(--vanilla);
+  padding: 10px;
+`;
 
 interface Props {
   initSelection: number[];
@@ -12,7 +53,7 @@ interface Props {
   saveSelection: (items: number[]) => void;
 }
 
-export const SelectItems: ForwardRefExoticComponent<
+export const SelectItemsModal: ForwardRefExoticComponent<
   Props & React.RefAttributes<HTMLDialogElement>
 > = forwardRef<HTMLDialogElement, Props>(
   ({ initSelection, maxItems = 3, toggleDialog, saveSelection }, ref) => {
@@ -32,6 +73,8 @@ export const SelectItems: ForwardRefExoticComponent<
         }
       }
     };
+
+    const clearSelected = () => setSelectedIDs([]);
 
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
       setSearch(event.currentTarget.value);
@@ -58,15 +101,21 @@ export const SelectItems: ForwardRefExoticComponent<
       handleSelect,
       toggleDialog,
       saveSelection,
+      clearSelected,
     };
 
     return (
-      <dialog ref={ref} className="dialog">
-        <div className="select-modal-content">
-          <Header filterItems={filterItems} onSearch={handleSearch} onFilter={handleChangeFilter} />
-          <ul className="list">
+      <Dialog ref={ref}>
+        <DilogContent>
+          <Header
+            filterItems={filterItems}
+            onSearch={handleSearch}
+            onFilter={handleChangeFilter}
+            onClose={toggleDialog}
+          />
+          <ListItems>
             {listItems.map((e) => (
-              <Item
+              <ListItem
                 key={e.id}
                 disabled={selectedIDs?.length === maxItems}
                 isSelected={selectedIDs.includes(e.id)}
@@ -74,10 +123,11 @@ export const SelectItems: ForwardRefExoticComponent<
                 onClick={() => handleSelect(e.id)}
               />
             ))}
-          </ul>
+            {!listItems.length && <Message>No results found.</Message>}
+          </ListItems>
           <Footer {...footerProps} />
-        </div>
-      </dialog>
+        </DilogContent>
+      </Dialog>
     );
   }
 );

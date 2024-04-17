@@ -1,11 +1,10 @@
 import { FC, useRef, useState } from "react";
-import { SelectItems } from "../SelectItems/SelectItems";
+import { SelectItemsModal } from "../../components/SelectItemsModal/SelectItemsModal";
 import { SelectedItems } from "../../components/SelectedItems/SelectedItems";
 import { useElementsData } from "../../hooks/useElementsData";
 import { Flex } from "../../core/Flex/Flex";
-
-const LS_IDS = "element-widget-IDs";
-const MAX_ITEMS = 33;
+import { Button } from "../../core/Button/Button";
+import { LS_IDS, MAX_ITEMS } from "../../core/consts";
 
 const Start: FC = () => {
   // Load data - TODO - useElementsData uset twice
@@ -22,6 +21,7 @@ const Start: FC = () => {
     setSelection(items);
     toggleDialog();
 
+    // Save to localStorage for user - to be loaded on load/refresh
     localStorage.setItem(LS_IDS, JSON.stringify(items));
   };
 
@@ -38,15 +38,15 @@ const Start: FC = () => {
 
   return (
     <Flex orientation="column" gap="medium">
-      <button className="button-primary" onClick={toggleDialog}>
+      <Button $primary onClick={toggleDialog}>
         {selection.length
           ? "Change my choice"
           : `Pick ${MAX_ITEMS} item${MAX_ITEMS > 1 ? "s" : ""}`}
-      </button>
+      </Button>
 
       <SelectedItems elements={elements} selectedIDs={selection} />
 
-      <SelectItems
+      <SelectItemsModal
         ref={dialogRef}
         initSelection={selection}
         maxItems={MAX_ITEMS}
