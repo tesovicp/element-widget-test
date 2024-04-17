@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IItem } from "../../hooks/useElementsData";
+import { IItem } from "../../data/getElementsData";
 import styled from "styled-components";
 
 const Item = styled.button<{ $isSelected?: boolean; $disabled?: boolean }>`
@@ -44,7 +44,12 @@ export const ListItem: FC<Props> = ({ isSelected, item, disabled, onClick }) => 
   }
   return (
     <li>
-      <Item $isSelected={isSelected} $disabled={disabled} onClick={() => onClick(item)}>
+      <Item
+        $isSelected={isSelected}
+        $disabled={disabled}
+        onClick={() => onClick(item)}
+        type="button"
+      >
         {item.name}
       </Item>
     </li>

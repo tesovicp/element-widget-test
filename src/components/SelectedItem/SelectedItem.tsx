@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IItem } from "../../hooks/useElementsData";
+import { IItem } from "../../data/getElementsData";
 import xIcon from "/x-b.svg";
 import styled from "styled-components";
 
@@ -39,7 +39,7 @@ export const SelectedItem: FC<Props> = ({ item, onRemove }) => {
   if (!item) {
     return null;
   }
-  const showX = !!onRemove;
+  const showX = onRemove !== undefined;
   return (
     <li>
       <SelectedItemButton $showX={showX}>

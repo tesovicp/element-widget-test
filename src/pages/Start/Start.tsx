@@ -1,11 +1,12 @@
 import { FC, useRef, useState } from "react";
 import { SelectItemsModal } from "../../components/SelectItemsModal/SelectItemsModal";
 import { SelectedItems } from "../../components/SelectedItems/SelectedItems";
-import { useElementsData } from "../../hooks/useElementsData";
+import { getElements } from "../../data/getElementsData";
 import { Flex } from "../../core/Flex/Flex";
 import { Button } from "../../core/Button/Button";
 import { LS_IDS, MAX_ITEMS } from "../../core/constants";
 import styled from "styled-components";
+import { getSavedSelection } from "../../core/utils";
 
 const Background = styled.div`
   background-image: url("list-icon.png");
@@ -22,15 +23,14 @@ const Background = styled.div`
 `;
 
 const Start: FC = () => {
-  // Load data - TODO - useElementsData uset twice
-  const { elements } = useElementsData();
+  const elements = getElements();
 
-  // Load selected items from localStorage
-  const IDs = localStorage.getItem(LS_IDS);
-  const loadedItems: number[] = IDs ? JSON.parse(IDs) : [];
+  //Loads the list of selected item IDs from localStorage.
+  const loadedItems = getSavedSelection();
 
   // Selection
   const [selection, setSelection] = useState<number[]>(loadedItems);
+  const [refresh, setRefresh] = useState<boolean>();
 
   const saveSelection = (items: number[]) => {
     setSelection(items);
@@ -40,12 +40,13 @@ const Start: FC = () => {
     localStorage.setItem(LS_IDS, JSON.stringify(items));
   };
 
-  // Modal dialog
+  // Modal dialog ref
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const toggleDialog = () => {
     if (!dialogRef.current) return;
 
+    setRefresh(!refresh);
     dialogRef.current.hasAttribute("open")
       ? dialogRef.current.close()
       : dialogRef.current.showModal();
@@ -56,7 +57,7 @@ const Start: FC = () => {
       <Background />
 
       <Flex orientation="column" gap="medium">
-        <Button $primary onClick={toggleDialog}>
+        <Button $primary onClick={toggleDialog} type="button">
           {selection.length
             ? "Change my choice"
             : `Pick ${MAX_ITEMS} item${MAX_ITEMS > 1 ? "s" : ""}`}
@@ -68,6 +69,7 @@ const Start: FC = () => {
           ref={dialogRef}
           initSelection={selection}
           maxItems={MAX_ITEMS}
+          refresh={refresh}
           toggleDialog={toggleDialog}
           saveSelection={saveSelection}
         />

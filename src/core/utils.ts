@@ -1,4 +1,5 @@
-import { IItem } from "../hooks/useElementsData";
+import { IItem } from "../data/getElementsData";
+import { LS_IDS } from "./constants";
 
 /**
  * Retrieves the first element in an array that has provided id.
@@ -8,4 +9,13 @@ import { IItem } from "../hooks/useElementsData";
  */
 export const getItem = (elements: IItem[], id: number) => {
   return elements.find((e) => e.id === id);
+};
+
+/**
+ * Loads the list of selected item IDs from localStorage.
+ * @returns {*} The array of numbers (IDs).
+ */
+export const getSavedSelection = (): number[] => {
+  const IDs = localStorage.getItem(LS_IDS);
+  return IDs ? JSON.parse(IDs) : [];
 };

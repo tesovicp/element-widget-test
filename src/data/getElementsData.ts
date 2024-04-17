@@ -8,7 +8,11 @@ export interface IFilterItem {
   name: string;
 }
 
-const getElements = () => {
+/**
+ * Generates and gets the list of elements for the list.
+ * @returns {*} The array of records <number, string>.
+ */
+export const getElements = () => {
   const result: IItem[] = [];
   for (let i = 1; i <= 300; i++) {
     result.push({ id: i, name: `Element ${i}` });
@@ -23,7 +27,11 @@ const filterItems: IFilterItem[] = [
   { id: 200, name: ">200" },
 ];
 
-export const useElementsData = () => ({
+/**
+ * Gets the elements for the list and items for filter.
+ * @returns {*} The object with `elements` and `filterItems`.
+ */
+export const getElementsData = () => ({
   elements: getElements(),
   filterItems,
 });

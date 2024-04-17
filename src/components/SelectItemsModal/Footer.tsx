@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { SelectedItems } from "../SelectedItems/SelectedItems";
-import { IItem } from "../../hooks/useElementsData";
+import { IItem } from "../../data/getElementsData";
 import styled from "styled-components";
 import { Button } from "../../core/Button/Button";
 import { Flex } from "../../core/Flex/Flex";
@@ -24,7 +24,7 @@ interface Props {
   elements: IItem[];
   selectedIDs: number[];
   handleSelect: (id: number) => void;
-  toggleDialog: () => void;
+  onClose: () => void;
   saveSelection: (items: number[]) => void;
   clearSelected: () => void;
 }
@@ -33,7 +33,7 @@ export const Footer: FC<Props> = ({
   elements,
   selectedIDs,
   handleSelect,
-  toggleDialog,
+  onClose,
   saveSelection,
   clearSelected,
 }) => (
@@ -42,14 +42,14 @@ export const Footer: FC<Props> = ({
       <SelectedItems elements={elements} selectedIDs={selectedIDs} onRemove={handleSelect} />
     </FooterSelection>
     <FooterButtons>
-      <Button onClick={() => clearSelected()} $small>
+      <Button onClick={() => clearSelected()} $small type="button">
         Clear
       </Button>
       <Flex>
-        <Button $primary onClick={() => saveSelection(selectedIDs)}>
+        <Button $primary onClick={() => saveSelection(selectedIDs)} type="button">
           Save
         </Button>
-        <Button onClick={toggleDialog} $small autoFocus>
+        <Button tabIndex={1} onClick={onClose} $small type="reset">
           Cancel
         </Button>
       </Flex>

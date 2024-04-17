@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from "react";
-import { IFilterItem } from "../../hooks/useElementsData";
+import { IFilterItem } from "../../data/getElementsData";
 import styled from "styled-components";
 import XSvg from "/x-w.svg";
 import { Flex } from "../../core/Flex/Flex";

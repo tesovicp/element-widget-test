@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { SelectedItem } from "../SelectedItem/SelectedItem";
-import { IItem } from "../../hooks/useElementsData";
+import { IItem } from "../../data/getElementsData";
 import { getItem } from "../../core/utils";
 import styled from "styled-components";
 
