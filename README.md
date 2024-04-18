@@ -11,7 +11,10 @@
 
 ### Tech stack
 
-React + TypeScript + Vite
+- React
+- TypeScript
+- Vite
+- `styled-components`
 
 ### Installation and running
 
