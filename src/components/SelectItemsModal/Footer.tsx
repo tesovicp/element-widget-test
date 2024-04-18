@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import { SelectedItems } from "../SelectedItems/SelectedItems";
 import { IItem } from "../../data/getElementsData";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ const FooterButtons = styled.div`
 interface Props {
   elements: IItem[];
   selectedIDs: number[];
+  reload?: boolean;
   handleSelect: (id: number) => void;
   onClose: () => void;
   saveSelection: (items: number[]) => void;
@@ -32,27 +33,36 @@ interface Props {
 export const Footer: FC<Props> = ({
   elements,
   selectedIDs,
+  reload,
   handleSelect,
   onClose,
   saveSelection,
   clearSelected,
-}) => (
-  <footer>
-    <FooterSelection>
-      <SelectedItems elements={elements} selectedIDs={selectedIDs} onRemove={handleSelect} />
-    </FooterSelection>
-    <FooterButtons>
-      <Button onClick={() => clearSelected()} $small type="button">
-        Clear
-      </Button>
-      <Flex>
-        <Button $primary onClick={() => saveSelection(selectedIDs)} type="button">
-          Save
+}) => {
+  const refCancel = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    refCancel?.current?.focus();
+  }, [reload]);
+
+  return (
+    <footer>
+      <FooterSelection>
+        <SelectedItems elements={elements} selectedIDs={selectedIDs} onRemove={handleSelect} />
+      </FooterSelection>
+      <FooterButtons>
+        <Button onClick={() => clearSelected()} $small type="button">
+          Clear
         </Button>
-        <Button autoFocus onClick={onClose} $small type="reset">
-          Cancel
-        </Button>
-      </Flex>
-    </FooterButtons>
-  </footer>
-);
+        <Flex>
+          <Button $primary onClick={() => saveSelection(selectedIDs)} type="button">
+            Save
+          </Button>
+          <Button autoFocus onClick={onClose} $small type="reset" ref={refCancel}>
+            Cancel
+          </Button>
+        </Flex>
+      </FooterButtons>
+    </footer>
+  );
+};

@@ -39,7 +39,7 @@ const DialogContent = styled.form`
   flex-direction: column;
   min-width: 280px;
   max-height: min(90vh, 735px);
-  padding: 15px;
+  padding: 10px 15px;
   width: 100%;
 `;
 
@@ -60,7 +60,7 @@ const Message = styled.p`
 interface Props {
   initSelection: number[];
   maxItems?: number;
-  refresh?: boolean;
+  reload?: boolean;
   toggleDialog: () => void;
   saveSelection: (items: number[]) => void;
 }
@@ -68,7 +68,7 @@ interface Props {
 export const SelectItemsModal: ForwardRefExoticComponent<
   Props & React.RefAttributes<HTMLDialogElement>
 > = forwardRef<HTMLDialogElement, Props>(
-  ({ initSelection, maxItems = 3, refresh, toggleDialog, saveSelection }, ref) => {
+  ({ initSelection, maxItems = 3, reload, toggleDialog, saveSelection }, ref) => {
     const { elements, filterItems } = getElementsData();
 
     const [selectedIDs, setSelectedIDs] = useState<number[]>(initSelection);
@@ -78,7 +78,7 @@ export const SelectItemsModal: ForwardRefExoticComponent<
 
     useEffect(() => {
       setSelectedIDs(getSavedSelection());
-    }, [refresh]);
+    }, [reload]);
 
     const handleSelect = (id: number) => {
       if (selectedIDs.includes(id)) {
@@ -126,6 +126,7 @@ export const SelectItemsModal: ForwardRefExoticComponent<
     const footerProps = {
       elements,
       selectedIDs,
+      reload,
       handleSelect,
       onClose,
       saveSelection,

@@ -28,9 +28,11 @@ const Start: FC = () => {
   //Loads the list of selected item IDs from localStorage.
   const loadedItems = getSavedSelection();
 
-  // Selection
+  // Reload selection state
+  const [reload, setReload] = useState<boolean>();
+
+  // Selection state
   const [selection, setSelection] = useState<number[]>(loadedItems);
-  const [refresh, setRefresh] = useState<boolean>();
 
   const saveSelection = (items: number[]) => {
     setSelection(items);
@@ -46,7 +48,7 @@ const Start: FC = () => {
   const toggleDialog = () => {
     if (!dialogRef.current) return;
 
-    setRefresh(!refresh);
+    setReload(!reload);
     dialogRef.current.hasAttribute("open")
       ? dialogRef.current.close()
       : dialogRef.current.showModal();
@@ -69,7 +71,7 @@ const Start: FC = () => {
           ref={dialogRef}
           initSelection={selection}
           maxItems={MAX_ITEMS}
-          refresh={refresh}
+          reload={reload}
           toggleDialog={toggleDialog}
           saveSelection={saveSelection}
         />

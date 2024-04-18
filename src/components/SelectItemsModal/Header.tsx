@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const TitleDiv = styled.div`
   border-bottom: 1px solid var(--border);
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 `;
 
 const ActionsHeader = styled.header`
