@@ -38,7 +38,7 @@ const DialogContent = styled.form`
   display: flex;
   flex-direction: column;
   min-width: 280px;
-  max-height: min(90vh, 735px);
+  max-height: min(90svh, 735px);
   padding: 10px 15px;
   width: 100%;
 `;

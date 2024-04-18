@@ -45,7 +45,7 @@ export const SelectedItem: FC<Props> = ({ item, onRemove }) => {
       <SelectedItemButton $showX={showX} type="button">
         <span>{item.name}</span>
         {showX && (
-          <Xbox>
+          <Xbox onClick={() => onRemove(item.id)}>
             <Xicon />
           </Xbox>
         )}
