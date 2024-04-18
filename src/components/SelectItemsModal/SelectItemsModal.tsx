@@ -4,6 +4,7 @@ import {
   ForwardRefExoticComponent,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { getElementsData } from "../../data/getElementsData";
@@ -76,8 +77,13 @@ export const SelectItemsModal: ForwardRefExoticComponent<
     const [search, setSearch] = useState<string | undefined>();
     const [filter, setFilter] = useState<number | undefined>();
 
+    const formRef = useRef<HTMLFormElement>(null);
+
     useEffect(() => {
+      formRef.current?.reset();
       setSelectedIDs(getSavedSelection());
+      setSearch(undefined);
+      setFilter(undefined);
     }, [reload]);
 
     const handleSelect = (id: number) => {
@@ -135,7 +141,7 @@ export const SelectItemsModal: ForwardRefExoticComponent<
 
     return (
       <Dialog ref={ref}>
-        <DialogContent>
+        <DialogContent ref={formRef}>
           <Header {...headerProps} />
           <ListItems>
             {listItems.map((e) => (
